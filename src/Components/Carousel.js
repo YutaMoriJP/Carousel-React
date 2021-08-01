@@ -44,9 +44,10 @@ const Carousel = ({ images, time = 2000 }) => {
   let length = images.length || 0;
   const [count, setCount] = useState(0);
   const [canceled, setCanceled] = useState(false);
+  const [imageRendered, setImagerendered] = useState(false);
+
   const timerID = useRef(null);
   useEffect(() => {
-    console.log("effect is called");
     timerID.current = setInterval(() => {
       setCount(prevCount => {
         //images.length
@@ -58,15 +59,25 @@ const Carousel = ({ images, time = 2000 }) => {
   }, [canceled, length, time]);
   return (
     <>
-      <TextSlot>
-        <Text>
-          Carousel UI achieved with React. The image rotates to the next one
-          after 2 seconds, or by clicking the button below the image.
-        </Text>
-      </TextSlot>
+      {imageRendered && (
+        <TextSlot>
+          <Text>
+            Carousel UI achieved with React. The image rotates to the next one
+            after 2 seconds, or by clicking the button below the image.
+          </Text>
+        </TextSlot>
+      )}
       <ImageSlot>
         {images.map(({ src, id, alt }, index) => (
-          <Image key={id} src={src} alt={alt} index={index} count={count} />
+          <Image
+            key={id}
+            src={src}
+            alt={alt}
+            index={index}
+            count={count}
+            setImagerendered={setImagerendered}
+            length={length}
+          />
         ))}
       </ImageSlot>
       <CarouselButtonsSlot>

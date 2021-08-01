@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import defaultImage from "../img/notfound.jpeg";
 import Img from "../styles/Img";
 
@@ -11,7 +11,15 @@ import Img from "../styles/Img";
  * @returns
  */
 
-const Image = ({ src = defaultImage, alt = "", index, count, ...rest }) => {
+const Image = ({
+  src = defaultImage,
+  alt = "",
+  index,
+  count,
+  setImagerendered,
+  length,
+  ...rest
+}) => {
   const srcRef = useRef(src);
   let altVal = useRef(alt);
   const handleError = event => {
@@ -20,6 +28,11 @@ const Image = ({ src = defaultImage, alt = "", index, count, ...rest }) => {
       altVal.current = "Image failed to load...";
     }
   };
+  useEffect(() => {
+    if (length - 1 === index) {
+      setImagerendered(true);
+    }
+  }, []);
   let active = index === count ? 1 : 0;
   return (
     <Img
