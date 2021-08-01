@@ -62,8 +62,9 @@ const Carousel = ({ images, time = 2000 }) => {
       {imageRendered && (
         <TextSlot>
           <Text>
-            Carousel UI achieved with React. The image rotates to the next one
-            after 2 seconds, or by clicking the button below the image.
+            Carousel UI achieved with React. The image slides to the next one
+            after 2 seconds (can be controllled via props), or by clicking the
+            button below the image.
           </Text>
         </TextSlot>
       )}
