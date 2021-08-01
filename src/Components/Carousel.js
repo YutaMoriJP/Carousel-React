@@ -40,6 +40,7 @@ import Text from "./Text";
  * @returns {element} - uses 2 slot components, ImageSlot and CarouselButtonsSlot to slot
  * in the image components and button components to the specific part of the UI.
  */
+
 const Carousel = ({ images, time = 2000 }) => {
   let length = images.length || 0;
   const [count, setCount] = useState(0);
@@ -76,20 +77,22 @@ const Carousel = ({ images, time = 2000 }) => {
             alt={alt}
             index={index}
             count={count}
-            setImagerendered={setImagerendered}
             length={length}
+            setImagerendered={setImagerendered}
           />
         ))}
       </ImageSlot>
-      <CarouselButtonsSlot>
-        <CarouselButtons
-          length={length}
-          count={count}
-          setCount={setCount}
-          timerID={timerID}
-          setCanceled={setCanceled}
-        />
-      </CarouselButtonsSlot>
+      {imageRendered && (
+        <CarouselButtonsSlot>
+          <CarouselButtons
+            length={length}
+            count={count}
+            setCount={setCount}
+            timerID={timerID}
+            setCanceled={setCanceled}
+          />
+        </CarouselButtonsSlot>
+      )}
     </>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import defaultImage from "../img/notfound.jpeg";
 import Img from "../styles/Img";
 
@@ -16,29 +16,33 @@ const Image = ({
   alt = "",
   index,
   count,
-  setImagerendered,
   length,
+  setImagerendered,
   ...rest
 }) => {
-  const srcRef = useRef(src);
-  let altVal = useRef(alt);
+  let active = index === count ? 1 : 0;
   const handleError = event => {
     if (!event.target.src) {
-      srcRef.current = defaultImage;
-      altVal.current = "Image failed to load...";
+      event.target.src = defaultImage;
+      event.target.alt = "Image failed to load...";
     }
   };
-  useEffect(() => {
-    if (length - 1 === index) {
+  const handleLoad = event => {
+    //component renders are committed to that DOM by ReactDOM before images are loaded
+    //that may create weird UI loading in the first load, where everything other than images are loaded first
+    //to create better consistency, handleLoad updates the imageRendered state to true
+    //AFTER the last image has been loaded
+    //that will create a more consistent UI loading
+    if (index === length - 1) {
       setImagerendered(true);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  let active = index === count ? 1 : 0;
+  };
+
   return (
     <Img
-      src={srcRef.current}
-      alt={altVal.current}
+      src={src}
+      alt={alt}
+      onLoad={handleLoad}
       onError={handleError}
       active={active}
       aria-hidden={active ? false : true}

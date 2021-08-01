@@ -1,5 +1,6 @@
 import Global from "./styles/Global";
 import CarouselSlot from "./Components/Slots/CarouselSlot";
+
 import Carousel from "./Components/Carousel";
 //data
 import images from "./data/images";
