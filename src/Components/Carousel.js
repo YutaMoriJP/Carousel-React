@@ -36,7 +36,7 @@ import Text from "./Text";
  * so the interval continues with where it left off
  *
  * @param {{src: string, alt:string, id: string}[]} images - an array with objects as elements, contains the images to render
- * @param {number} time - controls the interval of setInterval callback
+ * @param {number} time - controls the interval of the setInterval callback
  * @returns {element} - uses 2 slot components, ImageSlot and CarouselButtonsSlot to slot
  * in the image components and button components to the specific part of the UI.
  */

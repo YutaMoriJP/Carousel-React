@@ -6,17 +6,19 @@ import Img from "../styles/Img";
  *
  * @param {string} src - location of image
  * @param {string} alt - image description
- * @param {number} index - index value of image
+ * @param {number} index - index value of image - <Image/> is rendered by map()
  * @param {number} count - count state controls which image should be displayed
+ * @param {number} length - points at the length of the image array
+ * @param {function} setImagerendered - state update function - tells parent component that the last image has been loaded, called in onLoad event handler
  * @returns
  */
 
 const Image = ({
   src = defaultImage,
   alt = "",
-  index,
+  index = 0,
   count,
-  length,
+  length = 0,
   setImagerendered,
   ...rest
 }) => {
@@ -27,14 +29,14 @@ const Image = ({
       event.target.alt = "Image failed to load...";
     }
   };
-  const handleLoad = event => {
+  const handleLoad = () => {
     //component renders are committed to that DOM by ReactDOM before images are loaded
     //that may create weird UI loading in the first load, where everything other than images are loaded first
     //to create better consistency, handleLoad updates the imageRendered state to true
     //AFTER the last image has been loaded
     //that will create a more consistent UI loading
     if (index === length - 1) {
-      setImagerendered(true);
+      typeof setImagerendered === "function" && setImagerendered(true);
     }
   };
 
