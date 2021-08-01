@@ -32,6 +32,7 @@ const Image = ({
     if (length - 1 === index) {
       setImagerendered(true);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   let active = index === count ? 1 : 0;
   return (
