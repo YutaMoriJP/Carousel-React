@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import Global from "./styles/Global";
+import CarouselSlot from "./Components/Slots/CarouselSlot";
+import Carousel from "./Components/Carousel";
+//data
+import images from "./data/images";
 
+//use images prop to pass an array contains an elements with an object
+//that is structured like {src, alt, id}
+//src should point at the image src
+//alt is for accessibility and should describe the image
+//id must be an unique value, used for the key prop, which helps React to keep track of that react element
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Global />
+      <CarouselSlot Carousel={Carousel} images={images} />
+    </>
   );
 }
 
