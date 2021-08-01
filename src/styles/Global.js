@@ -5,7 +5,7 @@ const Global = createGlobalStyle`
         box-sizing: border-box;
     }
     body {
-    background-color: #e3fafc;
+    background-color: #f8f0fc;
     font-family: Arial, Helvetica, sans-serif;
     }
 `;
