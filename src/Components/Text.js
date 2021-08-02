@@ -1,33 +1,40 @@
 import React from "react";
 import TextStyled from "../styles/Text";
 import styled from "styled-components";
+import Link from "../styles/Link";
 
 export const Wrapper = styled.article`
   background: #9c36b5;
   max-width: 400px;
-  width: 80%;
-  min-width: 180px;
-  padding: 5px 20px;
+  width: 75%;
+  min-width: 150px;
+  padding: 5px 15px;
   border-radius: 8px;
   box-shadow: 4px 4px 6px #495057;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   text-align: center;
-  a {
-    color: white;
-  }
 `;
 
 const Text = ({ children }) => {
   return (
     <Wrapper>
       <TextStyled>{children}</TextStyled>
-      <a
+      <Link
         href="https://vanilla-carousel.netlify.app/"
         target="_blank"
         rel="noreferrer"
+        vanilla
       >
         Vanilla JS Version
-      </a>
+      </Link>
+      <Link
+        href="https://github.com/YutaMoriJP/Carousel-React"
+        target="_blank"
+        rel="noreferrer"
+        github
+      >
+        Github repo
+      </Link>
     </Wrapper>
   );
 };
