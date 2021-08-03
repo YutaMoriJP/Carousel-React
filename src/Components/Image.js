@@ -35,7 +35,10 @@ const Image = ({
     //to create better consistency, handleLoad updates the imageRendered state to true
     //AFTER the last image has been loaded
     //that will create a more consistent UI loading
-    if (index === length - 1) {
+    if (index === 0) {
+      //index === length - 1 - renders components that is not <Image/> too late
+      //so updated the expression to index === 0
+      //or else if length is 50, then it will take too long
       typeof setImagerendered === "function" && setImagerendered(true);
     }
   };
