@@ -9,7 +9,7 @@ const Img = styled.img`
   display: ${props => (props.active ? "block" : "none")};
   margin: 5px;
   :hover {
-    box-shadow: 5px 5px 8px black;
+    box-shadow: 5px 5px 25px black;
   }
 `;
 
