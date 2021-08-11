@@ -1,1 +1,2 @@
-#Carousel UI built with React
+# Carousel UI built with React
+A React component API that helps users to build a Carousel UI. The API is easy to use where the user needs to pass an array that contains an object as its element. The object literal should look like {src, id, alt}. Look at the demo to see it in action or jump to the Github repo to learn more about the implementation details. [Demo](https://react-carousel-ui.netlify.app/).
